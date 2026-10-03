@@ -1,0 +1,7 @@
+{
+  "name": "Matt Cuts Chicago - Men's Barber & Mobile Haircuts",
+  "description": "Professional Men's Barber in Chicago specializing in precision scissor cuts, European and straight hair styling, and beard trims. In-chair and mobile house calls across Chicago.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
+
