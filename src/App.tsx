@@ -6,7 +6,6 @@ import { Heritage } from './components/Heritage';
 import { HouseCallInfo } from './components/HouseCallInfo';
 import { ChicagoMap } from './components/ChicagoMap';
 import { Gallery } from './components/Gallery';
-import { ChicagoAreas } from './components/ChicagoAreas';
 import { Reviews } from './components/Reviews';
 import { FAQ } from './components/FAQ';
 import { Footer } from './components/Footer';
@@ -128,8 +127,6 @@ export default function App() {
           currentLang={currentLang}
           onSelectService={handleSelectService}
         />
-
-        <ChicagoAreas onOpenBookingWithHouseCall={handleOpenHouseCall} />
 
         <Reviews currentLang={currentLang} />
 

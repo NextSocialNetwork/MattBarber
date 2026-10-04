@@ -15,7 +15,7 @@ const LANGUAGES: { code: Language; label: string; flag: string }[] = [
   { code: 'en', label: 'English', flag: '🇺🇸' },
   { code: 'lt', label: 'Lietuvių', flag: '🇱🇹' },
   { code: 'pl', label: 'Polski', flag: '🇵🇱' },
-  { code: 'ru', label: 'Русский', flag: '🌐' },
+  { code: 'ru', label: 'Русский', flag: '🇷🇺' },
   { code: 'es', label: 'Español', flag: '🇪🇸' },
 ];
 
@@ -98,6 +98,7 @@ export const Navbar: React.FC<NavbarProps> = ({
               title="Change Language"
             >
               <Globe className="w-3.5 h-3.5 text-amber-400" />
+              <span>{currentLangObj.flag}</span>
               <span className="font-mono uppercase">{currentLangObj.code}</span>
               <ChevronDown className={`w-3 h-3 transition-transform ${langMenuOpen ? 'rotate-180' : ''}`} />
             </button>

@@ -177,7 +177,7 @@ export const AiChat: React.FC<AiChatProps> = ({
           <button
             onClick={() => setIsOpen(true)}
             className="flex items-center gap-2.5 px-4 py-3 bg-amber-400 hover:bg-amber-300 text-neutral-950 rounded-2xl shadow-xl shadow-amber-400/20 font-semibold text-xs sm:text-sm transition-all duration-200 cursor-pointer active:scale-95 group border border-amber-300/40"
-            aria-label="Open AI Barber Chat"
+            aria-label="Ask The Goat! 🐐"
           >
             <div className="relative">
               <Sparkles className="w-4 h-4 text-neutral-950 animate-pulse" />

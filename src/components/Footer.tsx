@@ -82,17 +82,24 @@ export const Footer: React.FC<FooterProps> = ({
                 <span>Languages / Kalbos / Języki / Языки / Idiomas:</span>
               </div>
               <div className="flex flex-wrap gap-1.5">
-                {(['en', 'lt', 'pl', 'ru', 'es'] as Language[]).map((code) => (
+                {([
+                  { code: 'en', flag: '🇺🇸' },
+                  { code: 'lt', flag: '🇱🇹' },
+                  { code: 'pl', flag: '🇵🇱' },
+                  { code: 'ru', flag: '🇷🇺' },
+                  { code: 'es', flag: '🇪🇸' },
+                ] as { code: Language; flag: string }[]).map(({ code, flag }) => (
                   <button
                     key={code}
                     onClick={() => onSelectLang(code)}
-                    className={`px-2 py-1 text-[11px] rounded font-mono uppercase cursor-pointer transition-colors ${
+                    className={`px-2 py-1 text-[11px] rounded font-mono uppercase cursor-pointer transition-colors flex items-center gap-1 ${
                       currentLang === code
                         ? 'bg-amber-400 text-neutral-950 font-bold'
                         : 'bg-neutral-900 border border-neutral-800 text-neutral-400 hover:text-white'
                     }`}
                   >
-                    {code}
+                    <span>{flag}</span>
+                    <span>{code}</span>
                   </button>
                 ))}
               </div>

@@ -10,19 +10,9 @@ const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
 const app = express();
-const port = 3000;
+const port = Number(process.env.PORT) || 3000;
 
 app.use(express.json());
-
-// Initialize GoogleGenAI server-side with required User-Agent
-const ai = new GoogleGenAI({
-  apiKey: process.env.GEMINI_API_KEY,
-  httpOptions: {
-    headers: {
-      'User-Agent': 'aistudio-build',
-    },
-  },
-});
 
 const SYSTEM_INSTRUCTION = `You are the friendly, expert AI Virtual Assistant for "The Goat Cuts 🐐" (TheGoatCuts.Com / operated by Master Barber Matt).
 
@@ -59,6 +49,15 @@ app.post('/api/chat', async (req, res) => {
       return res.status(400).json({ error: 'Messages array is required.' });
     }
 
+    const ai = new GoogleGenAI({
+      apiKey: process.env.GEMINI_API_KEY,
+      httpOptions: {
+        headers: {
+          'User-Agent': 'aistudio-build',
+        },
+      },
+    });
+
     // Format contents for @google/genai SDK
     const contents = messages.map((m: { role: string; content: string }) => ({
       role: m.role === 'assistant' ? 'model' : 'user',
@@ -86,7 +85,12 @@ app.post('/api/chat', async (req, res) => {
 });
 
 // Mount Vite middleware in development or serve static in production
-if (process.env.NODE_ENV === 'production') {
+const isProduction =
+  process.env.NODE_ENV === 'production' ||
+  process.env.npm_lifecycle_event === 'start';
+
+if (isProduction) {
+  app.use('/src/assets', express.static(path.join(__dirname, 'src', 'assets')));
   app.use(express.static(path.join(__dirname, 'dist')));
   app.get('*', (_req, res) => {
     res.sendFile(path.join(__dirname, 'dist', 'index.html'));
